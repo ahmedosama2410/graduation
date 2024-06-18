@@ -1,0 +1,172 @@
+.footer {
+  background-image: linear-gradient(150deg, #3d4ced, #48d6ed);
+  font-family: Gabriola;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.foo {
+  width: 100%;
+  height: auto;
+}
+
+.tfoo {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 40px;
+  justify-content: left;
+  padding-left: 80px;
+}
+
+.fcol {
+  width: 100%;
+  text-align: center;
+}
+
+.fcol h4 {
+  font-size: 40px;
+  color: #ffffff;
+  text-transform: capitalize;
+  position: relative;
+  padding: 0;
+  padding-left: 80px;
+  margin-bottom: 20px;
+}
+
+/*.fcol h4::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  background-color: #3d4ced;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}*/
+
+.fcol ul li:not(:last-child) {
+  margin-bottom: 0px;
+}
+
+.fcol ul li {
+padding-left: 50px; 
+margin: 0;
+}
+
+.fcol ul li a {
+  font-size: 25px;
+  text-transform: capitalize;
+  text-decoration: none;
+  color: #ffffff;
+  display: block;
+  transition: all 0.5s ease;
+  padding: 10px 0;
+}
+
+.fcol ul li a:hover {
+  color: rgb(205, 205, 205);
+}
+
+ul {
+  list-style: none;
+}
+
+.logof {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.sicon {
+  width: 45px;
+  height: 45px;
+}
+
+.hrf {
+  width: 90%;
+  height: 1px;
+  margin: 10px;
+  background-color: #ffffff;
+  color: #ffffff;
+}
+
+.cr {
+  color: #ffffff;
+  font-size: 25px;
+  margin: 5px ;
+  margin-left: 30%;
+
+  
+}
+
+/* Media Queries */
+
+@media (max-width: 992px) {
+  .fcol h4 {
+    font-size: 35px;
+  }
+
+  .fcol ul li a {
+    font-size: 22px;
+  }
+
+  .logof {
+    width: 180px;
+    height: 180px;
+  }
+
+  .hrf {
+    width: 90%;
+  }
+
+  .cr {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fcol h4 {
+    font-size: 30px;
+  }
+
+  .fcol ul li a {
+    font-size: 20px;
+  }
+
+  .logof {
+    width: 160px;
+    height: 160px;
+  }
+
+  .hrf {
+    width: 95%;
+  }
+
+  .cr {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .fcol h4 {
+    font-size: 25px;
+  }
+
+  .fcol ul li a {
+    font-size: 18px;
+  }
+
+  .logof {
+    width: 140px;
+    height: 140px;
+  }
+
+  .cr {
+    font-size: 18px;
+  }
+}

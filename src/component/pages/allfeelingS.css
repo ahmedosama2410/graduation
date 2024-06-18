@@ -1,0 +1,150 @@
+/* الأنماط العامة */
+
+.bodyc {
+  padding: 2rem; /* إضافة حواف حول الصفحة */
+}
+
+.bodyc h1 {
+  font-size: 3rem; /* استخدام وحدة rem لجعل الحجم نسبي */
+  margin-top: 2rem;
+  color: #5d5d5d;
+  text-align: center; /* تنسيق النص في المنتصف */
+}
+
+.allt {
+  width: 100%;
+}
+
+.ti {
+  color: #5d5d5d;
+  font-size: 2.1875rem; /* استخدام وحدة rem لجعل الحجم نسبي (35px = 2.1875rem) */
+  text-align: left;
+}
+
+.alln {
+  font-size: 1.875rem; /* استخدام وحدة rem لجعل الحجم نسبي (30px = 1.875rem) */
+  text-align: left;
+  padding-left: 3.125rem; /* 50px = 3.125rem */
+  color: #3b58ec;
+}
+
+.dbu {
+  float: right;
+  display: block;
+  width: 80px;
+  height: 40px;
+  font-size: 1.7rem;
+  color: #ec3b3b;
+  border-radius: 20px;
+  border-color: #3b58ec;
+  background-color: #fff;
+  margin-left: 250px;
+}
+
+.ubu {
+  display: block;
+  width: 80px;
+  height: 40px;
+  font-size: 1.7rem;
+  color: #3b58ec;
+  border-radius: 20px;
+  border-color: #3b58ec;
+  background-color: #fff;
+  margin-left: 2.5rem; /* 50px = 3.125rem */
+}
+
+.hrall {
+  width: 57.5rem; /* 600px = 37.5rem */
+  margin-left: 3.125rem; /* 50px = 3.125rem */
+  margin-top: 1.25rem; /* 20px = 1.25rem */
+}
+
+/* Media Queries */
+
+/* للشاشات الكبيرة (أكبر من 1200px) */
+@media (min-width: 1200px) {
+  .bodyc h1 {
+    font-size: 4rem; /* تكبير حجم النص */
+  }
+
+  .ti {
+    font-size: 2.5rem;
+  }
+
+  .alln {
+    font-size: 2.2rem;
+  }
+}
+
+/* للشاشات المتوسطة (من 992px إلى 1200px) */
+@media (max-width: 1200px) {
+  .bodyc h1 {
+    font-size: 3.5rem;
+  }
+
+  .ti {
+    font-size: 2.25rem;
+  }
+
+  .alln {
+    font-size: 2rem;
+  }
+}
+
+/* للشاشات الصغيرة (من 768px إلى 992px) */
+@media (max-width: 992px) {
+  .bodyc h1 {
+    font-size: 3rem;
+  }
+
+  .ti {
+    font-size: 2rem;
+  }
+
+  .alln {
+    font-size: 1.75rem;
+  }
+}
+
+/* للشاشات الأصغر (من 576px إلى 768px) */
+@media (max-width: 768px) {
+  .bodyc h1 {
+    font-size: 2.5rem;
+  }
+
+  .ti {
+    font-size: 1.75rem;
+  }
+
+  .alln {
+    font-size: 1.5rem;
+  }
+}
+
+/* للشاشات الصغيرة جداً (أقل من 576px) */
+@media (max-width: 576px) {
+  .bodyc h1 {
+    font-size: 2rem;
+  }
+
+  .ti {
+    font-size: 1.5rem;
+  }
+
+  .alln {
+    font-size: 1.25rem;
+  }
+
+  .dbu,
+  .ubu {
+    width: 70px;
+    height: 35px;
+    font-size: 1.5rem;
+  }
+
+  .hrall {
+    width: 30rem; /* 480px = 30rem */
+    margin-left: 2rem; /* 32px = 2rem */
+    margin-top: 1rem; /* 16px = 1rem */
+  }
+}

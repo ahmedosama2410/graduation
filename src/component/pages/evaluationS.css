@@ -1,0 +1,49 @@
+/* الأنماط العامة */
+
+.bodyc {
+    padding: 2rem; /* إضافة حواف حول الصفحة */
+}
+  
+.bodyc h1 {
+    font-size: 3rem; /* استخدام وحدة rem لجعل الحجم نسبي */
+    margin-top: 2rem;
+    color: #5d5d5d;
+    text-align: center; /* تنسيق النص في المنتصف */
+}
+  
+  
+.evata {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.ti {
+    font-size: 40px;
+    color: #5d5d5d;
+}
+
+.num {
+    font-size: 100px;
+    color: #3b58ec;
+    margin-top: -50px;
+}
+
+/* تنسيق للواجهات الجوالية */
+@media (max-width: 600px) {
+    .bodyc {
+        padding: 1rem; /* تقليل حجم الحواف في الجوال */
+    }
+
+    .bodyc h1 {
+        font-size: 2rem; /* تقليل حجم العنوان في الجوال */
+    }
+
+    .ti {
+        font-size: 30px; /* تقليل حجم النص في الجوال */
+    }
+
+    .num {
+        font-size: 60px; /* تقليل حجم الأرقام في الجوال */
+        margin-top: -30px; /* تعديل التباعد بين الأرقام في الجوال */
+    }
+}

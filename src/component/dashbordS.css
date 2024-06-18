@@ -1,0 +1,81 @@
+.da {
+    margin-top: 30px;
+    vertical-align: top;
+    width: 100%;
+    height: 1000px;
+    background-color: white;
+}
+
+.da h2 {
+    margin-top: -30px;
+    padding-bottom: 40px;
+    text-align: center;
+    font-size: 50px;
+    color: #3b58ec;
+}
+
+.da ul li a {
+    font-size: 30px;
+    text-decoration: none;
+    color: #3b58ec;
+    margin-left: -10px;
+}
+
+.da li a:hover {
+    color: #5d5d5d;
+}
+
+.da ul li {
+    text-align: left;
+    list-style-type: none;
+    padding-inline-start: 0px;
+    margin-bottom: -20px;
+    margin-top: 0px;
+}
+
+.hr {
+    margin-right: 20px;
+    margin-left: -20px;
+}
+
+/* Media Queries */
+
+@media (max-width: 992px) {
+    .da h2 {
+        font-size: 40px;
+    }
+
+    .da ul li a {
+        font-size: 25px;
+        margin-left: 0;
+    }
+
+    .da ul li {
+        margin-bottom: -10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .da h2 {
+        font-size: 35px;
+    }
+
+    .da ul li a {
+        font-size: 22px;
+    }
+
+    .da ul li {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .da h2 {
+        font-size: 30px;
+        padding-bottom: 20px;
+    }
+
+    .da ul li a {
+        font-size: 20px;
+    }
+}

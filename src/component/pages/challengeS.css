@@ -1,0 +1,173 @@
+/* الأنماط العامة */
+
+.bodyc {
+    padding: 2rem; /* إضافة حواف حول الصفحة */
+}
+
+.bodyc h1 {
+    font-size: 3rem; /* استخدام وحدة rem لجعل الحجم نسبي */
+    margin-top: 2rem;
+    color: #5d5d5d;
+    text-align: center; /* تنسيق النص في المنتصف */
+}
+
+.photoa {
+    width: 100%; /* جعل الصورة قابلة للتكيف مع حجم العنصر الأب */
+    max-width: 200px;
+    height: auto; /* جعل الارتفاع تلقائي ليتناسب مع العرض */
+    margin: 3rem auto; /* إضافة مسافات حول الصورة وتوسيطها */
+}
+
+.form {
+    width: 100%;
+    height: auto;
+    margin-top: 3rem;
+    color: #3b58ec;
+    padding-left: 3rem; /* تعديل المسافة من اليسار */
+    font-size: 2rem;
+}
+
+.in {
+    width: 100%;
+    max-width: 980px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid;
+    padding-left: 1rem;
+    margin-top: -0.5rem;
+    color:#5d5d5d;
+    font-size: 1.5rem;
+    margin-bottom: 1rem; /* إضافة مسافة تحتية */
+}
+
+label {
+   
+    display: block; /* عرض الملصق ككتلة مستقلة */
+    color: #3b58ec;
+    margin-top: 2rem;
+    margin-left: 0; /* إزالة المسافة من اليسار */
+    font-size: 2.5rem;
+}
+
+.ta {
+    width: 100%;
+    max-width: 980px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid;
+    padding-left: 1rem;
+    margin-top: -0.5rem;
+    color: #3b58ec;
+    font-size: 1.5rem;
+    margin-bottom: 1rem; /* إضافة مسافة تحتية */
+}
+
+/* زر الإضافة للأيام */
+.buadd {
+    display: block; /* عرض الزر ككتلة مستقلة */
+    width: 150px;
+    height: 50px;
+    font-size: 2rem;
+    color: #3b58ec;
+    border-radius: 20px;
+    border-color: #3b58ec;
+    margin: 3rem auto 5rem; /* إضافة مسافات حول الزر وتوسيطه */
+    background-color: #fff;
+}
+
+.busa {
+    display: block; /* عرض الزر ككتلة مستقلة */
+    width: 150px;
+    height: 50px;
+    font-size: 2rem;
+    color: #3b58ec;
+    border-radius: 20px;
+    border-color: #3b58ec;
+    margin: 3rem auto 5rem; /* إضافة مسافات حول الزر وتوسيطه */
+    background-color: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .bodyc h1 {
+        font-size: 2.5rem;
+    }
+
+    .form {
+        padding-left: 2rem; /* تعديل المسافة من اليسار */
+    }
+
+    .in {
+        font-size: 1.25rem;
+    }
+
+    .ta {
+        font-size: 1.25rem;
+    }
+
+    .buadd {
+        width: 120px;
+        font-size: 1.25rem;
+        margin-top: 1rem;
+    }
+
+    label {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .bodyc h1 {
+        font-size: 2rem;
+    }
+
+    .form {
+        padding-left: 1rem; /* تعديل المسافة من اليسار */
+    }
+
+    .in {
+        font-size: 1rem;
+    }
+
+    .ta {
+        font-size: 1rem;
+    }
+
+    .buadd {
+        width: 100px;
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+
+    label {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .bodyc h1 {
+        font-size: 1.5rem;
+    }
+
+    .form {
+        padding-left: 0.5rem; /* تعديل المسافة من اليسار */
+    }
+
+    .in {
+        font-size: 0.875rem;
+    }
+
+    .ta {
+        font-size: 0.875rem;
+    }
+
+    .buadd {
+        width: 80px;
+        font-size: 0.875rem;
+        margin-top: 1rem;
+    }
+
+    label {
+        font-size: 1.25rem;
+    }
+}

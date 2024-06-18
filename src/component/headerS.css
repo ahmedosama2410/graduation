@@ -1,0 +1,133 @@
+.header nav {
+    font-family: Gabriola;
+    background-image: linear-gradient(150deg, #3d4ced, #48d6ed);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 75px;
+    margin: 0;
+    font-size: 35px;
+  }
+  
+  .header ul li {
+    display: inline-block;
+  }
+  
+  .header ul {
+    display: flex;
+    padding: 0;
+    padding-right: 260px;
+    float: right;
+    margin-top: -5px;
+  }
+  
+  .header li {
+    padding: 25px;
+  }
+  
+  .logoh {
+    width: 230px;
+    height: 85px;
+    float: left;
+    padding-left: 30px;
+  }
+  
+  .header ul li a {
+    font-size: 33px;
+    position: relative;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    text-transform: capitalize;
+    display: block;
+    transition: all 0.5s ease;
+  }
+  
+  .header li a:hover {
+    color: rgb(205, 205, 205);
+    padding-top: 3px;
+  }
+  
+  /* Media Queries */
+  
+  @media (max-width: 1200px) {
+    .header nav {
+      font-size: 30px;
+    }
+  
+    .header ul li a {
+      font-size: 28px;
+    }
+  
+    .logoh {
+      width: 200px;
+      height: 75px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .header nav {
+      font-size: 25px;
+    }
+  
+    .header ul {
+      padding-right: 200px;
+    }
+  
+    .header ul li a {
+      font-size: 25px;
+    }
+  
+    .logoh {
+      width: 180px;
+      height: 70px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .header nav {
+      flex-direction: column;
+      height: auto;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .header ul {
+      padding-right: 0;
+      margin-top: 10px;
+      float: none;
+    }
+  
+    .header ul li {
+      padding: 15px;
+    }
+  
+    .header ul li a {
+      font-size: 22px;
+    }
+  
+    .logoh {
+      width: 150px;
+      height: 60px;
+      padding-left: 0;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .header nav {
+      font-size: 20px;
+    }
+  
+    .header ul li {
+      padding: 10px;
+    }
+  
+    .header ul li a {
+      font-size: 20px;
+    }
+  
+    .logoh {
+      width: 120px;
+      height: 50px;
+    }
+  }
+  
