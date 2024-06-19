@@ -47,10 +47,10 @@ function Footer() {
                       <a href="contactus">Contact us</a>
                     </li>
                     <li>
-                      <a href="commonquestions">Common Questions</a>
+                      <a href="commonquestions">Comments</a>
                     </li>
                     <li>
-                      <a href="support">Support</a>
+                      <a href="support">Evaluation</a>
                     </li>
                   </ul>
                 </div>
@@ -60,20 +60,18 @@ function Footer() {
             <tr>
               <td>
                 <div className="fcol">
-                  <h4>hhhh</h4>
+                  <h4>Challenges</h4>
                   <ul>
                     <li>
-                      <a href="Home">Home</a>
+                      <a href="Home">All Challenges</a>
                     </li>
                     <li>
-                      <a href="Home">Home</a>
+                      <a href="Home">Add Challenges</a>
                     </li>
                     <li>
-                      <a href="Home">Home</a>
+                      <a href="Home">User Challenges</a>
                     </li>
-                    <li>
-                      <a href="Home">Home</a>
-                    </li>
+                   
                   </ul>
                 </div>
               </td>
@@ -82,17 +80,15 @@ function Footer() {
             <tr>
               <td>
                 <div className="fcol">
-                  <h4>hhhh</h4>
+                  <h4>feeling</h4>
                   <ul>
                     <li>
-                      <a href="Home">Home</a>
+                      <a href="Home">All feeling</a>
                     </li>
                     <li>
-                      <a href="Home">Home</a>
+                      <a href="Home">Add feeling</a>
                     </li>
-                    <li>
-                      <a href="Home">Home</a>
-                    </li>
+                  
                   </ul>
                 </div>
               </td>

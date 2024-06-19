@@ -19,7 +19,7 @@
   flex-wrap: wrap;
   padding-top: 40px;
   justify-content: left;
-  padding-left: 80px;
+  padding-left: 30px;
 }
 
 .fcol {
@@ -77,9 +77,11 @@ ul {
 }
 
 .logof {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   margin-bottom: 20px;
+  margin-top: 25px;
+  margin-left: -30px;
 }
 
 .sicon {
@@ -93,13 +95,14 @@ ul {
   margin: 10px;
   background-color: #ffffff;
   color: #ffffff;
+  margin-left: 80px;
 }
 
 .cr {
   color: #ffffff;
   font-size: 25px;
   margin: 5px ;
-  margin-left: 30%;
+  margin-left: 35%;
 
   
 }
