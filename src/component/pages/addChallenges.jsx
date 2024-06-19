@@ -1,25 +1,57 @@
 import React, { useState } from "react";
 import "./addChallengesS.css";
 import Photoc from "../photo.png";
-
+import Swal from 'sweetalert2'
+import axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 export default function AddChallenges() {
-  const [daysCount, setDaysCount] = useState(2); // العدد الإفتراضي للأيام هو يومين
-  const [daysContent, setDaysContent] = useState(["", ""]); // محتوى كل يوم
+  const history = useHistory();
 
-  // تعديل محتوى اليوم
+  const [formData, setFormData] = useState({
+    name: "",
+    brief: "",
+    days: ["", ""]  // Defaulting to two empty days
+  });
+
+  // Function to handle changes in form fields
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Function to handle changes in day content
   const handleDayChange = (index, value) => {
-    const updatedDaysContent = [...daysContent];
-    updatedDaysContent[index] = value;
-    setDaysContent(updatedDaysContent);
+    const updatedDays = [...formData.days];
+    updatedDays[index] = value;
+    setFormData({ ...formData, days: updatedDays });
   };
 
-  // إضافة يوم جديد
+  // Function to add a new day
   const addNewDay = () => {
-    setDaysCount(daysCount + 1);
-    setDaysContent([...daysContent, ""]);
+    setFormData({ ...formData, days: [...formData.days, ""] });
   };
 
+ // Function to save the form data to the API
+ const handleSave = async () => {
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_API_URL}/api/v1/UserChallengePublic/save`, // Replace with your actual endpoint
+      formData
+    );
+    Swal.fire("Saved successfully:");
+    history.push('/AllChallenges');
+
+    // Optionally, perform any success handling (e.g., show a success message)
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Something went wrong!",
+      footer: '<a href="#">Why do I have this issue?</a>'
+    });
+  }
+};
   return (
     <>
       <div className="bodyc">
@@ -30,13 +62,25 @@ export default function AddChallenges() {
           <form className="formc">
             <label>Challenges Name</label>
             <br />
-            <input className="in" type="text" />
+            <input
+              className="in"
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+            />
             <br />
             <label>Brief</label>
-            <br/>
-            <input className="in" type="text" />
             <br />
-            {daysContent.map((day, index) => (
+            <input
+              className="in"
+              type="text"
+              name="brief"
+              value={formData.brief}
+              onChange={handleInputChange}
+            />
+            <br />
+            {formData.days.map((day, index) => (
               <React.Fragment key={index}>
                 <label>Day {index + 1}</label>
                 <br />
@@ -51,7 +95,7 @@ export default function AddChallenges() {
             <button className="buadd" type="button" onClick={addNewDay}>
               Add Day
             </button>
-            <button className="busa" type="button">
+            <button className="busa" type="button" onClick={handleSave}>
               Save
             </button>
           </form>

@@ -1,9 +1,19 @@
 import { Link } from "react-router-dom";
 import "./headerS.css";
 import Logo from "./logoh.png";
+import { FaRegUserCircle } from "react-icons/fa";
+import { useEffect, useState } from "react";
+
 export default Header;
 
 function Header() {
+    const [token,setToken] = useState(localStorage.getItem("token"))
+   const logout=()=>{
+    localStorage.removeItem("token")
+    localStorage.removeItem("admin")
+
+    window.location.reload()
+   }
     return (<>
 
         <div className="header">
@@ -19,20 +29,20 @@ function Header() {
                             </a> */}
                     </li>
                     <li>
-                    <Link to="/about">About us</Link>
+                        <Link to="/about">About us</Link>
                         {/* <a href="About us">
                             About us
                         </a> */}
                     </li>
                     <li>
-                    <Link to="/Contact">Contact US</Link>
+                        <Link to="/Contact">Contact US</Link>
                         {/* <a href="Contact us">
                             Contact us
                         </a> */}
                     </li>
                     <li>
-                    <Link to="/Help">Help   </Link>
-{/* 
+                        <Link to="/Help">Help   </Link>
+                        {/* 
                         <a href=" Help">
                             Help
                         </a> */}
@@ -41,13 +51,20 @@ function Header() {
                     </li>
                     <li>
                     </li>
-                    <li>
-                    <Link to="/login">Login   </Link>
+                 
 
-                        {/* <a href="Log in">
-                            Sign in
-                        </a> */}
-                    </li>
+                    {
+                        token ? <div style={{display:"flex"}}>
+                            <FaRegUserCircle style={{margin:"28px 0" , cursor:"pointer"}}/>
+                            <button  onClick={logout} style={{background: "none", border: "none", margin: "20px 15px"}}>Logout</button>
+                        </div> : <li>
+                            <Link to="/login">Login   </Link>
+
+                            {/* <a href="Log in">
+                                Sign in
+                            </a> */}
+                        </li>
+                    }
                 </ul>
             </nav>
         </div>
