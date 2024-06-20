@@ -30,13 +30,7 @@ function Header() {
                             Contact us
                         </a> */}
                     </li>
-                    <li>
-                    <Link to="/Help">Help   </Link>
-{/* 
-                        <a href=" Help">
-                            Help
-                        </a> */}
-                    </li>
+                   
                     <li>
                     </li>
                     <li>

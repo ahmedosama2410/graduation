@@ -1,17 +1,15 @@
-import "./userChallengesS.css";
+import "./fellingS.css";
 
-export default UserChallenges;
+export default Feeling;
 
-function UserChallenges(){
+function Feeling(){
     return( <>
      
-            <div className="bodyc">
-
-                <h1>User Challenges</h1>
-
-                <div className="conc">
+     <div className="bodyc">
+        <h1>Update Feeling</h1>
+        <div className="conc">
           <br />
-          <form className="formuser">
+          <form className="formup">
             <label>Challenges Name</label>
             <br />
             <input className="in" type="text" />
@@ -20,26 +18,26 @@ function UserChallenges(){
             <br/>
             <input className="in" type="text" />
             <br />
-            <label>Day 1</label>
+            <label>Advice</label>
             <br/>
             <input className="in" type="text" />
             <br />
-            <label>Day 2</label>
+            <label>Advice</label>
             <br/>
             <input className="in" type="text" />
             <br />
-            <label>Day 3</label>
+            <label>Advice</label>
             <br/>
             <input className="in" type="text" />
             <br />
           
                
             <button className="busa" type="button">
-            Publish
+              Save
             </button>
           </form>
         </div>
-            </div>
+      </div>
 
  
         </>
