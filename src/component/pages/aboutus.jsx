@@ -1,7 +1,6 @@
 import "./aboutusS.css";
 import TeamP from "../our.png";
 import LogoT from "../logogif.gif";
-import Reham from "../reham.png";
 
 
 export default AboutUs;
@@ -44,7 +43,7 @@ function AboutUs(){
                         </li>
 
                         <li className="member">
-                        <img src={Reham} className="our" alt="our" />
+                        <img src={TeamP} className="our" alt="our" />
                         <br/>
                         <br/>
                         <p className="namem"><b>Reham Hany</b></p>
