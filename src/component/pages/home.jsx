@@ -5,8 +5,7 @@ import { decrement, increment } from "../redux/actions";
 export default Home;
 
 function Home() {
-  const count = useSelector(state => state.count);
-  const dispatch = useDispatch();
+
   return (
     <>
       <div className="bodyc">
