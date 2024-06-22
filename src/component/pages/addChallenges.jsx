@@ -7,10 +7,11 @@ import { useHistory } from 'react-router-dom';
 
 export default function AddChallenges() {
   const history = useHistory();
+  const [token,setToken] = useState(localStorage.getItem("token"))
 
   const [formData, setFormData] = useState({
     name: "",
-    brief: "",
+    description: "",
     days: ["", ""]  // Defaulting to two empty days
   });
 
@@ -36,8 +37,14 @@ export default function AddChallenges() {
  const handleSave = async () => {
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_API_URL}/api/v1/UserChallengePublic/save`, // Replace with your actual endpoint
-      formData
+      `${process.env.REACT_APP_API_URL}/api/v1/userChallengePrivate/save`, // Replace with your actual endpoint
+      formData,
+      {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json' // or 'multipart/form-data' depending on your formData
+        }
+      }
     );
     Swal.fire("Saved successfully:");
     history.push('/AllChallenges');
@@ -75,8 +82,8 @@ export default function AddChallenges() {
             <input
               className="in"
               type="text"
-              name="brief"
-              value={formData.brief}
+              name="description"
+              value={formData.description}
               onChange={handleInputChange}
             />
             <br />

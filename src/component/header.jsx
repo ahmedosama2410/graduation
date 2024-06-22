@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
 import "./headerS.css";
 import Logo from "./logoh.png";
+import { useState } from "react";
+import { FaRegUserCircle } from "react-icons/fa";
 export default Header;
 
 function Header() {
+    const [token,setToken] = useState(localStorage.getItem("token"))
+    const logout=()=>{
+     localStorage.removeItem("token")
+     localStorage.removeItem("admin")
+ 
+     window.location.reload()
+    }
     return (<>
 
         <div className="header">
@@ -33,15 +42,18 @@ function Header() {
                    
                     <li>
                     </li>
-                    <li>
-                    </li>
-                    <li>
-                    <Link to="/login">Login   </Link>
+              
+               
 
-                        {/* <a href="Log in">
-                            Sign in
-                        </a> */}
-                    </li>
+                    {
+                        token ? <div style={{display:"flex"}}>
+                            <FaRegUserCircle  style={{margin:"28px 0" , cursor:"pointer",color:"#e5e5e5"}} className="hovered"/>
+                            <button  onClick={logout} style={{background: "none", border: "none",color:"#fff", margin: "20px 15px"}} className="hovered">Logout</button>
+                        </div> : <li>
+                            <Link to="/login">Login   </Link>
+                        </li>
+                    }
+               
                 </ul>
             </nav>
         </div>

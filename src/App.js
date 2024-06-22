@@ -18,6 +18,9 @@ import SignUp from "./component/signup";
 import Header from "./component/header";
 import Footer from "./component/footer";
 import DashBord from "./component/dashbord";
+import Challenge from "./component/pages/challenge";
+import Feeling from "./component/pages/feeling";
+import UserChallenges from "./component/pages/userchallenges";
 
 //import Signin from "./component/signin";
 //import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -48,10 +51,13 @@ export default class App extends Component {
                   <Route path="/Contact" component={ContactUs} />
                   <Route path="/Help" component={Help} />
                   <Route path="/login" component={Signin} />
+                  <Route path="/challenge/:id" component={Challenge} />
+                  <Route path="/feeling/:id" component={Feeling} />
                   <Route path="/signup" component={SignUp} />
                   <Route path="/AddChallenges" component={AddChallenges} />
                   <Route exact path="/AllChallenges" component={AllChallenges} />
                   <Route path="/AllUserChallenges" component={AllUserChallenges} />
+                  <Route path="/userchallenge" component={UserChallenges} />
                   <Route path="/AddProblem" component={AddFeeling} />
                   <Route exact path="/AllProblem" component={AllFeeling} />
                   <Route path="/Comments" component={Comments} />

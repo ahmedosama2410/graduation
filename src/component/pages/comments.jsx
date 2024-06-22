@@ -2,200 +2,107 @@ import "./commentsS.css";
 import Like from "../like.png";
 import Dislike from "../dislike.png";
 import Photoc from "../photo.png";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Swal from 'sweetalert2';
 
 export default Comments;
 
 function Comments() {
+  // State to manage the list of comments
+  const [comments, setAllComments] = useState([]);
+
+  // Fetch data from the API using Axios
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/posts/getAllPosts`);
+        setAllComments(response.data?.posts);
+      } catch (error) {
+        console.error("Error fetching comments:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="#">Why do I have this issue?</a>'
+        });
+      }
+    };
+
+    fetchComments();
+  }, []);
+
+  // Function to delete a comment
+  const deleteComment = async (id) => {
+    const token = localStorage.getItem('token'); // or wherever your token is stored
+
+    try {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/v1/posts/delete`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        params: {
+          id: id
+        }
+      });
+
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
+    }
+  };
+
   return (
     <>
       <div className="bodyc">
         <h1>Comments</h1>
         <br />
-
-        <div className="com">
-          <div className="namec">
-            <ul>
-              <li>
-                <img src={Photoc} className="photoc" alt="icon" />
-              </li>
-              <li>
-                <p className="name">Ali Ali</p>
-              </li>
-            </ul>
+        {comments && comments.map((item) => (
+          <div className="com" key={item.id}>
+            <div className="namec">
+              <ul>
+                <li>
+                  <img src={item.image} className="photoc" alt="icon" />
+                </li>
+                <li>
+                  <p className="name">{item.userName}</p>
+                </li>
+              </ul>
+            </div>
+            <br />
+            <p className="pc">
+              {item.content}
+            </p>
+            <br />
+            <div className="iconc">
+              <ul>
+                <li>
+                  <button className="buc" onClick={() => deleteComment(item.id)}>Delete</button>
+                </li>
+                <li>
+                  <img src={Dislike} className="icc" alt="icon" />
+                </li>
+                <li>
+                  <p className="cnum">{item.disLike}</p>
+                </li>
+                <li>
+                  <img src={Like} className="icc" alt="icon" />
+                </li>
+                <li>
+                  <p className="cnum">{item.like}</p>
+                </li>
+              </ul>
+            </div>
+            <br />
+            <hr className="hrc" />
           </div>
-
-          <br />
-          <p className="pc">
-            Our project contains the possibility of writing daily habits that
-            the user wants to add and setting their alerts to commit to doing
-            them daily. There are also habits or we can call them tasks at
-            specific times.
-          </p>
-
-          <br />
-
-          <div className="iconc">
-            <ul>
-              <li>
-                <button className="buc">Delete</button>
-              </li>
-
-             
-
-              <li>
-                <img src={Dislike} className="icc" alt="icon" />
-              </li>
-              <li>
-                <p className="cnum">3</p>
-              </li>
-
-              <li>
-                <img src={Like} className="icc" alt="icon" />
-              </li>
-
-              <li>
-                <p p className="cnum">7</p>
-              </li>
-            </ul>
-          </div>
-          <br />
-          <hr className="hrc" />
-        </div>
-        {/*********************************************************************** */}
-        <div className="com">
-          <div className="namec">
-            <ul>
-              <li>
-                <img src={Photoc} className="photoc" alt="icon" />
-              </li>
-              <li>
-                <p className="name">Ali Ali</p>
-              </li>
-            </ul>
-          </div>
-          <br />
-          <p className="pc">
-            The application aims to help the user to be regular in his work and
-            tasks and to establish the positive habits that he wants to adhere
-            to instead of the negative habits that he returns to whenever he
-            wants to stay away from them.
-          </p>
-
-          <br />
-
-          <div className="iconc">
-            <ul>
-              <li>
-                <button className="buc">Delete</button>
-              </li>
-
-             
-              <li>
-                <img src={Dislike} className="icc" alt="icon" />
-              </li>
-              <li>
-                <p p className="cnum">0</p>
-              </li>
-             
-              <li>
-                <img src={Like} className="icc" alt="icon" />
-              </li>
-
-              <li>
-                <p p className="cnum">9</p>
-              </li>
-            </ul>
-          </div>
-          <br />
-          <hr className="hrc" />
-        </div>
-        {/*********************************************************************** */}
-        <div className="com">
-          <div className="namec">
-            <ul>
-              <li>
-                <img src={Photoc} className="photoc" alt="icon" />
-              </li>
-              <li>
-                <p className="name">Ali Ali</p>
-              </li>
-            </ul>
-          </div>
-          <br />
-          <p className="pc">I like this App</p>
-
-          <br />
-
-          <div className="iconc">
-            <ul>
-              <li>
-                <button className="buc">Delete</button>
-              </li>
-
-             
-             
-              <li>
-                <img src={Dislike} className="icc" alt="icon" />
-              </li>
-              <li>
-                <p p className="cnum">0</p>
-              </li>
-             
-              <li>
-                <img src={Like} className="icc" alt="icon" />
-              </li>
-
-              <li>
-                <p p className="cnum">3</p>
-              </li>
-            </ul>
-          </div>
-          <br />
-          <hr className="hrc" />
-        </div>
-        {/*********************************************************************** */}
-        <div className="com">
-          <div className="namec">
-            <ul>
-              <li>
-                <img src={Photoc} className="photoc" alt="icon" />
-              </li>
-              <li>
-                <p className="name">Ali Ali</p>
-              </li>
-            </ul>
-          </div>
-          <br />
-          <p className="pc">I like this App</p>
-
-          <br />
-
-          <div className="iconc">
-            <ul>
-              <li>
-                <button className="buc">Delete</button>
-              </li>
-
-           
-              <li>
-                <img src={Dislike} className="icc" alt="icon" />
-              </li>
-              <li>
-                <p p className="cnum">8</p>
-              </li>
-            
-              <li>
-                <img src={Like} className="icc" alt="icon" />
-              </li>
-
-              <li>
-                <p p className="cnum">9</p>
-              </li>
-            </ul>
-          </div>
-          <br />
-          <br/>
-        </div>
+        ))}
       </div>
     </>
   );

@@ -43,10 +43,12 @@
   }
   
   .header li a:hover {
-    color: rgb(205, 205, 205);
+    color: rgb(191, 184, 184);
     padding-top: 3px;
   }
-  
+  .hovered:hover{
+    color: #d3caca !important;
+  }
   /* Media Queries */
   
   @media (max-width: 1200px) {

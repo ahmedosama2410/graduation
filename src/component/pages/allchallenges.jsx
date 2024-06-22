@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./allchallengesS.css";
 import axios from "axios";
 import Swal from 'sweetalert2'
+import { useHistory  } from 'react-router-dom';
 
 export default function AllChallenges() {
   // State to manage the list of challenges
   const [challenges, setChallenges] = useState([]);
+  const [token,setToken] = useState(localStorage.getItem("token"))
+  const [reload,setReaload] = useState(false)
+  const history = useHistory ();
 
   // State to manage editing
   const [editId, setEditId] = useState(null);
@@ -15,8 +19,11 @@ export default function AllChallenges() {
   useEffect(() => {
     const fetchChallenges = async () => {
       try {
-        
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/UserChallengePublic/findAll`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/userChallengePrivate/findAll`,{
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
         setChallenges(response.data);
       } catch (error) {
         console.error("Error fetching challenges:", error);
@@ -30,20 +37,26 @@ export default function AllChallenges() {
     };
 
     fetchChallenges();
-  }, []);
+  }, [reload]);
 
-console.log("challenges",challenges)
-  // Function to delete a challenge
-  const deleteChallenge = (id) => {
-    setChallenges(challenges.filter((challenge) => challenge.id !== id));
+  const deleteChallenge = async (id) => {  
+    try {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/v1/userChallengePrivate/delete`, {
+        params: {
+          ChallengeId: id
+        }
+      });
+      setReaload(!reload)
+      } catch (error) {
+      console.error('Error deleting challenge:', error);
+      // Handle error appropriately (e.g., show error message to user)
+    }
   };
 
-  // Function to start editing a challenge
-  const startEditChallenge = (id, name) => {
-    setEditId(id);
-    setNameValue(name);
-  };
 
+  const startEditChallenge = (id) => {
+    history.push(`/challenge/${id}`);
+  };
   // Function to update a challenge
   const updateChallenge = () => {
     setChallenges(
@@ -72,26 +85,6 @@ console.log("challenges",challenges)
             <tbody>
               {challenges && challenges?.map((challenge) => (
                 <React.Fragment key={challenge.id}>
-                  {editId === challenge.id ? (
-                    <tr>
-                      <td className="alln">
-                        <input
-                          value={nameVal}
-                          onChange={(e) => setNameValue(e.target.value)}
-                        />
-                      </td>
-                      <td>
-                        <button onClick={updateChallenge} className="dbu">
-                          Save
-                        </button>
-                      </td>
-                      <td>
-                        <button onClick={() => setEditId(null)} className="ubu">
-                          Cancel
-                        </button>
-                      </td>
-                    </tr>
-                  ) : (
                     <tr>
                       <td className="alln">{challenge.name}</td>
                       <td>
@@ -111,7 +104,6 @@ console.log("challenges",challenges)
                         </button>
                       </td>
                     </tr>
-                  )}
                   <tr>
                     <td colSpan="3">
                       <hr className="hrall" />

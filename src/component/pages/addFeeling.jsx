@@ -7,8 +7,8 @@ import { useHistory } from 'react-router-dom';
 export default function AddFeeling() {
   const [formData, setFormData] = useState({
     name: "",
-    brief: "",
-    advices: ["", ""]  // Defaulting to two empty days
+    description: "",
+    advice: ["", ""]  // Defaulting to two empty days
   });
   const history = useHistory();
 
@@ -21,14 +21,14 @@ export default function AddFeeling() {
 
   // Function to handle changes in day content
   const handleDayChange = (index, value) => {
-    const updatedDays = [...formData.advices];
+    const updatedDays = [...formData.advice];
     updatedDays[index] = value;
-    setFormData({ ...formData, advices: updatedDays });
+    setFormData({ ...formData, advice: updatedDays });
   };
 
   // Function to add a new day
   const addNewDay = () => {
-    setFormData({ ...formData, advices: [...formData.advices, ""] });
+    setFormData({ ...formData, advice: [...formData.advice, ""] });
   };
 
   // Function to save the form data to the API
@@ -36,7 +36,7 @@ export default function AddFeeling() {
     try {
 
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/v1/UserChallengePublic/save`, // Replace with your actual endpoint
+        `${process.env.REACT_APP_API_URL}/api/v1/feelings/save`, // Replace with your actual endpoint
         formData
       );
       Swal.fire("Saved successfully:");
@@ -74,11 +74,11 @@ export default function AddFeeling() {
             <br />
             <input className="in"
               type="text"
-              name="brief"
-              value={formData.brief}
+              name="description"
+              value={formData.description}
               onChange={handleInputChange} />
             <br />
-            {formData.advices.map((day, index) => (
+            {formData.advice.map((day, index) => (
               <React.Fragment key={index}>
                 <label>Advice {index + 1}</label>
                 <br />

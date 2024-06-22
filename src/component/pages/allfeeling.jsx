@@ -1,44 +1,73 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./allfeelingS.css";
+import axios from "axios";
+import Swal from 'sweetalert2'
+import { useHistory  } from 'react-router-dom';
 
 export default AllFeeling;
 
 function AllFeeling() {
 
   // State to manage the list of challenges
-  const [challenges, setChallenges] = useState([
-    { id: 1, name: "Overthinking" },
-    { id: 2, name: "Anger" },
-    { id: 3, name: "Anger" }
-  ]);
-  
+   // State to manage the list of challenges
+   const [challenges, setChallenges] = useState([]);
+   const history = useHistory ();
+   // State to manage editing
+   const [editId, setEditId] = useState(null);
+   const [nameVal, setNameValue] = useState("");
+   const [reload,setReaload] = useState(false)
 
-  // State to manage editing
-  const [editId, setEditId] = useState(null);
-  const [nameVal, setNameValue] = useState("");
-
-  // Function to delete a challenge
-  const deleteChallenge = (id) => {
-    setChallenges(challenges.filter((challenge) => challenge.id !== id));
+   // Fetch data from the API using Axios
+   useEffect(() => {
+    debugger
+     const fetchChallenges = async () => {
+       try {
+         
+         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/feelings/findAll`);
+         setChallenges(response.data);
+       } catch (error) {
+         console.error("Error fetching challenges:", error);
+         Swal.fire({
+           icon: "error",
+           title: "Oops...",
+           text: "Something went wrong!",
+           footer: '<a href="#">Why do I have this issue?</a>'
+         });
+       } 
+     };
+ 
+     fetchChallenges();
+   }, [reload]);
+ 
+   // Function to delete a challenge
+   const deleteChallenge = async (id) => {  
+    try {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/v1/feelings/delete`, {
+        params: {
+          feelingId: id
+        }
+      });
+      setReaload(!reload)
+      } catch (error) {
+      console.error('Error deleting challenge:', error);
+      // Handle error appropriately (e.g., show error message to user)
+    }
   };
-
-  // Function to start editing a challenge
-  const startEditChallenge = (id, name) => {
-    setEditId(id);
-    setNameValue(name);
+ 
+  const startEditChallenge = (id) => {
+    history.push(`/feeling/${id}`);
   };
-
-  // Function to update a challenge
-  const updateChallenge = () => {
-    setChallenges(
-      challenges.map((challenge) =>
-        challenge.id === editId ? { ...challenge, name: nameVal } : challenge
-      )
-    );
-    setEditId(null);
-    setNameValue("");
-  };
-
+   // Function to update a challenge
+   const updateChallenge = () => {
+     setChallenges(
+       challenges.map((challenge) =>
+         challenge.id === editId ? { ...challenge, name: nameVal } : challenge
+       )
+     );
+     setEditId(null);
+     setNameValue("");
+   };
+ 
   return (
     <>
       <div className="bodyc">
@@ -56,26 +85,7 @@ function AllFeeling() {
             <tbody>
               {challenges.map((challenge) => (
                 <React.Fragment key={challenge.id}>
-                  {editId === challenge.id ? (
-                    <tr>
-                      <td className="alln">
-                        <input
-                          value={nameVal}
-                          onChange={(e) => setNameValue(e.target.value)}
-                        />
-                      </td>
-                      <td>
-                        <button onClick={updateChallenge} className="dbu">
-                          Save
-                        </button>
-                      </td>
-                      <td>
-                        <button onClick={() => setEditId(null)} className="ubu">
-                          Cancel
-                        </button>
-                      </td>
-                    </tr>
-                  ) : (
+
                     <tr>
                       <td className="alln">{challenge.name}</td>
                       <td>
@@ -95,7 +105,7 @@ function AllFeeling() {
                         </button>
                       </td>
                     </tr>
-                  )}
+                  
                   <tr>
                     <td colSpan="3">
                       <hr className="hrall" />
