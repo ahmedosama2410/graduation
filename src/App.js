@@ -6,7 +6,7 @@ import AboutUs from "./component/pages/aboutus";
 import Home from "./component/pages/home";
 import AddChallenges from "./component/pages/addChallenges";
 import AllChallenges from "./component/pages/allchallenges";
-import UserChallenges from "./component/pages/userChallenges";
+import AllUserChallenges from "./component/pages/alluserchallenges";
 import AddFeeling from "./component/pages/addFeeling";
 import AllFeeling from "./component/pages/allfeeling";
 import Comments from "./component/pages/comments";
@@ -51,7 +51,7 @@ export default class App extends Component {
                   <Route path="/signup" component={SignUp} />
                   <Route path="/AddChallenges" component={AddChallenges} />
                   <Route exact path="/AllChallenges" component={AllChallenges} />
-                  <Route path="/UserChallenges" component={UserChallenges} />
+                  <Route path="/AllUserChallenges" component={AllUserChallenges} />
                   <Route path="/AddProblem" component={AddFeeling} />
                   <Route exact path="/AllProblem" component={AllFeeling} />
                   <Route path="/Comments" component={Comments} />

@@ -23,10 +23,11 @@ function DashBord() {
               {/* <a href="AddChallenges">Add Challenges</a> */}
             </li>
             <hr className="hr" />
+           
             <li>
-            <Link to="/UserChallenges">User Challenges </Link>
+            <Link to="/AllUserChallenges"> All User Challenges </Link>
 
-              {/* <a href="UserChallenges">User Challenges</a> */}
+              {/* <a href="All UserChallenges">All User Challenges</a> */}
             </li>
             <hr className="hr" />
             <li>
