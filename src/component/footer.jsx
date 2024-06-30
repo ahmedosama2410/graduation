@@ -4,6 +4,7 @@ import Siconf from "./face.png";
 import Siconw from "./wats.png";
 import Siconx from "./X.png";
 import Siconi from "./insta.png";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default Footer;
 
@@ -41,16 +42,17 @@ function Footer() {
                   <h4>Information</h4>
                   <ul>
                     <li>
-                      <a href="Aboutus">About us</a>
+                      <Link to="/about">About us</Link>
                     </li>
                     <li>
-                      <a href="contactus">Contact us</a>
+                    <Link to="/Contact">Contact us</Link>
                     </li>
                     <li>
-                      <a href="commonquestions">Comments</a>
+                    <Link to="/Comments">Comments</Link>
+
                     </li>
                     <li>
-                      <a href="support">Evaluation</a>
+                    <Link to="/Evaluation">Evaluation</Link>
                     </li>
                   </ul>
                 </div>
@@ -63,13 +65,15 @@ function Footer() {
                   <h4>Challenges</h4>
                   <ul>
                     <li>
-                      <a href="Home">All Challenges</a>
+                    <Link to="/AllChallenges">All Challenges</Link>
                     </li>
                     <li>
-                      <a href="Home">Add Challenges</a>
+                    <Link to="/AddChallenges">Add Challenges</Link>
+
                     </li>
                     <li>
-                      <a href="Home">User Challenges</a>
+                    <Link to="/AllUserChallenges">User Challenges</Link>
+
                     </li>
                    
                   </ul>
@@ -83,10 +87,12 @@ function Footer() {
                   <h4>feeling</h4>
                   <ul>
                     <li>
-                      <a href="Home">All feeling</a>
+                    <Link to="/AllProblem">All feeling</Link>
+
                     </li>
                     <li>
-                      <a href="Home">Add feeling</a>
+                    <Link to="/AddProblem">Add feeling</Link>
+
                     </li>
                   
                   </ul>

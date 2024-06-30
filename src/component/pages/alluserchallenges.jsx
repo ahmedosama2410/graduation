@@ -19,7 +19,7 @@ export default function AllChallenges() {
   useEffect(() => {
     const fetchChallenges = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/userChallengePrivate/findAll`,{
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/UserChallengePublic/findAll`,{
           headers: {
             'Authorization': `Bearer ${token}`
           }

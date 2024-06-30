@@ -11,6 +11,7 @@ export default Comments;
 function Comments() {
   // State to manage the list of comments
   const [comments, setAllComments] = useState([]);
+  const [reloadData,setReloadData]=useState(false)
 
   // Fetch data from the API using Axios
   useEffect(() => {
@@ -30,7 +31,7 @@ function Comments() {
     };
 
     fetchComments();
-  }, []);
+  }, [reloadData]);
 
   // Function to delete a comment
   const deleteComment = async (id) => {
@@ -46,6 +47,7 @@ function Comments() {
           id: id
         }
       });
+      setReloadData(!reloadData)
 
     } catch (error) {
       console.error("Error deleting comment:", error);

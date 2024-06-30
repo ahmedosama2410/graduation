@@ -17,13 +17,13 @@ export default function Challenge() {
   useEffect(() => {
     const fetchChallenge = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/findChallenge/find`, {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/adminChallenge/findChallenge`, {
           params: { ChallengeId: id },
           headers: {
             'Authorization': `Bearer ${token}`
           }
         });
-        setChallenge(response.data);
+        setChallenge(response.data?.data);
       } catch (error) {
         console.error("Error fetching challenge:", error);
         Swal.fire({
@@ -72,7 +72,7 @@ export default function Challenge() {
         title: "Success",
         text: "Challenge updated successfully!"
       });
-      history.push("/");
+      history.push("/AllChallenges");
     } catch (error) {
       console.error("Error updating challenge:", error);
       Swal.fire({
@@ -111,7 +111,7 @@ export default function Challenge() {
               onChange={handleInputChange}
             />
             <br />
-            {challenge.days.map((day, index) => (
+            {challenge.adminCDays?.length >0 && challenge?.adminCDays.map((day, index) => (
               <div key={index}>
                 <label>Day {index + 1}</label>
                 <br/>

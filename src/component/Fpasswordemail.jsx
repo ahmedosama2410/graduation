@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./FpasswordemailS.css";
 import Gif from "./logogif.gif";
 
@@ -21,7 +22,7 @@ function FPasswordEmail() {
               <input className="fp1si" type="text"></input>
 
               <br />
-              <button className="fp1bu">Next</button>
+              <button className="fp1bu"><Link to="/forgetpassNext">Next</Link></button>
             </form>
           </ul>
         </div>

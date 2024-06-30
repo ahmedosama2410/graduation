@@ -12,7 +12,7 @@ export default function AddChallenges() {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    days: ["", ""]  // Defaulting to two empty days
+    adminCDays: ["", ""]  // Defaulting to two empty days
   });
 
   // Function to handle changes in form fields
@@ -23,21 +23,28 @@ export default function AddChallenges() {
 
   // Function to handle changes in day content
   const handleDayChange = (index, value) => {
-    const updatedDays = [...formData.days];
+    const updatedDays = [...formData.adminCDays];
     updatedDays[index] = value;
-    setFormData({ ...formData, days: updatedDays });
+    setFormData({ ...formData, adminCDays: updatedDays });
   };
 
   // Function to add a new day
   const addNewDay = () => {
-    setFormData({ ...formData, days: [...formData.days, ""] });
+    setFormData({ ...formData, adminCDays: [...formData.adminCDays, ""] });
   };
 
  // Function to save the form data to the API
  const handleSave = async () => {
+  const adminCDays=[
+    {
+        "file":"",
+        "content":""
+    }
+]
+formData.adminCDays=adminCDays;
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_API_URL}/api/v1/userChallengePrivate/save`, // Replace with your actual endpoint
+      `${process.env.REACT_APP_API_URL}/api/v1/adminChallenge/save`, // Replace with your actual endpoint
       formData,
       {
         headers: {
@@ -87,7 +94,7 @@ export default function AddChallenges() {
               onChange={handleInputChange}
             />
             <br />
-            {formData.days.map((day, index) => (
+            {formData.adminCDays.map((day, index) => (
               <React.Fragment key={index}>
                 <label>Day {index + 1}</label>
                 <br />

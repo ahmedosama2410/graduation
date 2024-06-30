@@ -1,4 +1,4 @@
-import "./FpasswordecodeS.css";
+import "./fpasswordcodeS.css";
 import Gif from "./logogif.gif";
 
 export default FPasswordCode;
@@ -30,6 +30,7 @@ function FPasswordCode() {
               <button className="fp2bu">Save</button>
             </form>
           </ul>
+          
         </div>
       </div>
     </>

@@ -19,7 +19,7 @@ export default function AllChallenges() {
   useEffect(() => {
     const fetchChallenges = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/userChallengePrivate/findAll`,{
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/adminChallenge/findAll`,{
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -41,7 +41,7 @@ export default function AllChallenges() {
 
   const deleteChallenge = async (id) => {  
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/api/v1/userChallengePrivate/delete`, {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/v1/adminChallenge/delete`, {
         params: {
           ChallengeId: id
         }

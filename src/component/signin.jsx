@@ -95,13 +95,17 @@ function Signin() {
               ></input>
 
               <br />
-              <button className="inbu">Sign in</button>
 
               <br />
               <button className="inbu" onClick={handleSubmit}>
                 Sign in
               </button>
-              <Link to="/signup">Create New Account</Link>
+            <div className="designLinks">
+
+            <Link to="/signup">Create New Account</Link>
+            <Link to="/forgetpass">Forget Password</Link>
+            </div>
+
             </form>
           </ul>
         </div>

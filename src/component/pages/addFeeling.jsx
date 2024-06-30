@@ -8,7 +8,7 @@ export default function AddFeeling() {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    advice: ["", ""]  // Defaulting to two empty days
+    feelingDays: ["", ""]  // Defaulting to two empty days
   });
   const history = useHistory();
 
@@ -21,18 +21,21 @@ export default function AddFeeling() {
 
   // Function to handle changes in day content
   const handleDayChange = (index, value) => {
-    const updatedDays = [...formData.advice];
+    const updatedDays = [...formData.feelingDays];
     updatedDays[index] = value;
-    setFormData({ ...formData, advice: updatedDays });
+    setFormData({ ...formData, feelingDays: updatedDays });
   };
 
   // Function to add a new day
   const addNewDay = () => {
-    setFormData({ ...formData, advice: [...formData.advice, ""] });
+    setFormData({ ...formData, feelingDays: [...formData.feelingDays, ""] });
   };
 
   // Function to save the form data to the API
   const handleSave = async () => {
+    formData.feelingDays = formData.feelingDays.map(item => ({ advice: item }));
+
+    console.log("changeArray",formData.feelingDays)
     try {
 
       const response = await axios.post(
@@ -78,7 +81,7 @@ export default function AddFeeling() {
               value={formData.description}
               onChange={handleInputChange} />
             <br />
-            {formData.advice.map((day, index) => (
+            {formData.feelingDays.map((day, index) => (
               <React.Fragment key={index}>
                 <label>Advice {index + 1}</label>
                 <br />

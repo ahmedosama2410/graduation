@@ -90,6 +90,12 @@
   margin: 3rem auto 5rem;
   background-color: #fff;
 }
+.designLinks{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 18px;
+}
 
 /* Media Queries */
 @media (max-width: 1200px) {
