@@ -13,18 +13,18 @@ export default function Challenge() {
   });
   const [token, setToken] = useState(localStorage.getItem("token"));
   const history = useHistory();
-
   useEffect(() => {
+    debugger
     const fetchChallenge = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/feelings/findfeeling`, {
-          params: { feelingId: id },
+        debugger
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/UserChallengePublic/findChallenge`, {
+          params: { ChallengeId: Number(id) },
           headers: {
             'Authorization': `Bearer ${token}`
           }
         });
-        debugger
-        setChallenge(response?.data?.data);
+        setChallenge(response.data?.data);
       } catch (error) {
         console.error("Error fetching challenge:", error);
         Swal.fire({
@@ -112,7 +112,7 @@ export default function Challenge() {
               onChange={handleInputChange}
             />
             <br />
-            { challenge?.advice && challenge?.advice.map((day, index) => (
+            { challenge?.days && challenge?.days.map((day, index) => (
               <div key={index}>
                 <label>Day {index + 1}</label>
                 <br/>

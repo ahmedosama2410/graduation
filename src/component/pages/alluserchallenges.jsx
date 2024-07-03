@@ -59,6 +59,7 @@ export default function AllChallenges() {
 
 
   const startEditChallenge = (id) => {
+    debugger
     history.push(`/userchallenge/${id}`);
   };
   // Function to update a challenge

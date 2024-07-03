@@ -84,7 +84,6 @@ export default function Challenge() {
       });
     }
   };
-
   return (
     <>
       <div className="bodyc">
@@ -112,14 +111,14 @@ export default function Challenge() {
               onChange={handleInputChange}
             />
             <br />
-            { challenge?.advice && challenge?.advice.map((day, index) => (
+            { challenge?.feelingDays && challenge?.feelingDays.map((day, index) => (
               <div key={index}>
                 <label>Day {index + 1}</label>
                 <br/>
                 <input
                   className="in"
                   type="text"
-                  value={day}
+                  value={day.advice}
                   onChange={(e) => handleDayChange(index, e.target.value)}
                 />
                 <br />

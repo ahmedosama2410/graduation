@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
+import ProtectedRoute from "./ProtectedRoute"; // Import the ProtectedRoute component
 import Body from "./component/body";
 import AboutUs from "./component/pages/aboutus";
 import Home from "./component/pages/home";
@@ -34,28 +35,29 @@ function App() {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/about" component={AboutUs} />
-      <Route path="/Contact" component={ContactUs} />
+      {/* <Route path="/Contact" component={ContactUs} /> */}
       <Route path="/Help" component={Help} />
       <Route path="/login" component={Signin} />
-      <Route path="/challenge/:id" component={Challenge} />
-      <Route path="/feeling/:id" component={Feeling} />
       <Route path="/signup" component={SignUp} />
-      <Route path="/AddChallenges" component={AddChallenges} />
-      <Route exact path="/AllChallenges" component={AllChallenges} />
-      <Route path="/AllUserChallenges" component={AllUserChallenges} />
-      <Route path="/userchallenge" component={UserChallenges} />
-      <Route path="/AddProblem" component={AddFeeling} />
-      <Route exact path="/AllProblem" component={AllFeeling} />
-      <Route path="/Comments" component={Comments} />
-      <Route path="/Evaluation" component={Evaluation} />
       <Route path="/forgetpass" component={FPasswordEmail} />
       <Route path="/forgetpassNext" component={FPasswordCode} />
+      <ProtectedRoute path="/Contact" component={ContactUs} />
+      <ProtectedRoute path="/challenge/:id" component={Challenge} />
+      <ProtectedRoute path="/feeling/:id" component={Feeling} />
+      <ProtectedRoute path="/AddChallenges" component={AddChallenges} />
+      <ProtectedRoute exact path="/AllChallenges" component={AllChallenges} />
+      <ProtectedRoute path="/AllUserChallenges" component={AllUserChallenges} />
+      <ProtectedRoute path="/userchallenge/:id" component={UserChallenges} />
+      <ProtectedRoute path="/AddProblem" component={AddFeeling} />
+      <ProtectedRoute exact path="/AllProblem" component={AllFeeling} />
+      <ProtectedRoute path="/Comments" component={Comments} />
+      <ProtectedRoute path="/Evaluation" component={Evaluation} />
     </Switch>
   );
 
   return (
     <div className="App">
-    <Header />
+      {!noHeaderFooterPaths.includes(location.pathname) && <Header />}
       <table className="table">
         <tbody>
           <tr>

@@ -17,6 +17,7 @@ export default function Challenge() {
   useEffect(() => {
     const fetchChallenge = async () => {
       try {
+        debugger
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/adminChallenge/findChallenge`, {
           params: { ChallengeId: id },
           headers: {
@@ -83,7 +84,7 @@ export default function Challenge() {
       });
     }
   };
-
+console.log(challenge)
   return (
     <>
       <div className="bodyc">
@@ -118,7 +119,7 @@ export default function Challenge() {
                 <input
                   className="in"
                   type="text"
-                  value={day}
+                  value={day.name}
                   onChange={(e) => handleDayChange(index, e.target.value)}
                 />
                 <br />

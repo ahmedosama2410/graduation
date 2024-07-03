@@ -39,6 +39,24 @@ function Footer() {
             <tr>
               <td>
                 <div className="fcol">
+                  <ul>
+                    <li></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div className="fcol">
+                  <ul>
+                    <li></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div className="fcol">
                   <h4>Information</h4>
                   <ul>
                     <li>
@@ -99,7 +117,15 @@ function Footer() {
                 </div>
               </td>
             </tr>
-
+            <tr>
+              <td>
+                <div className="fcol">
+                  <ul>
+                    <li></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
             <tr>
               <td>
                 <div className="fcol">
